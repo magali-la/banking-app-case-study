@@ -1,0 +1,187 @@
+
+
+body {
+    height: 100vh;
+    width: 100vh;
+}
+
+/* Layout: use CSS Grid for page structure */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: #f8fafc;
+    color: #0f172a;
+}
+
+/* Root grid: sidebar + topbar + main content */
+body {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: 64px 1fr;
+    grid-template-areas:
+        "sidenav topbar"
+        "sidenav main";
+    min-height: 100vh;
+    gap: 0;
+}
+
+.sidenav-section {
+    grid-area: sidenav;
+    background: #dddfe1;
+    color: #767e87;
+    padding: 18px 12px;
+    box-sizing: border-box;
+}
+
+.sidenav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidenav .logos {
+    display:flex;
+    gap:8px;
+    align-items:center;
+    margin-bottom: 12px;
+}
+
+.sidenav a {
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.sidenav a.active,
+.sidenav a:hover {
+    background: #142033;
+    color: #fff;
+}
+
+/* Top navigation / header */
+.topbar {
+    grid-area: topbar;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background: #ffffff;
+    border-bottom: 1px solid #eef2f7;
+    box-sizing: border-box;
+}
+
+.topbar h1 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.topbar .search input {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #e6e9ee;
+    width: 280px;
+    box-sizing: border-box;
+}
+
+.main-section {
+    grid-area: main;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+/* Overview area uses grid: main content + right aside */
+.overview {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 24px;
+    align-items: start;
+}
+
+.overview-left {
+    display: block;
+}
+
+.overview-right {
+    background: #fff;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(16, 24, 40, 0.04);
+}
+
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.stat {
+    background: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(2,6,23,0.04);
+}
+
+.stat-title { font-size: 12px; color: #6b7280; }
+.stat-value { font-size: 20px; font-weight: 700; }
+
+.cards-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.card-sample {
+    background: linear-gradient(135deg,#3f7dff 0%, #302cf0 100%);
+    color: #fff;
+    padding: 16px;
+    border-radius: 12px;
+}
+
+.card-number { font-size: 16px; letter-spacing: 2px; margin-bottom: 8px; }
+.card-holder, .card-exp { font-size: 12px; opacity: 0.95; }
+
+.card-panels { margin-top: 12px; }
+.card-list { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; }
+.card-list th, .card-list td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #eef2f7; }
+.card-list thead { background: #f8fafc; }
+.card-actions { margin: 12px 0; display:flex; gap:8px; }
+.card-actions .add-card { background:#10b981;color:#fff;border:none;padding:8px 12px;border-radius:8px; }
+.card-actions .card-setting { background:#eef2f3;border:1px solid #e6e9ee;padding:8px 12px;border-radius:8px; }
+
+.card-info { background:#fff;padding:12px;border-radius:8px;margin-top:12px; }
+.block-card { background:#ef4444;color:#fff;border:none;padding:8px 12px;border-radius:8px;margin-top:8px; }
+
+.privilege { display:flex; flex-direction:column; gap:8px; margin-bottom:12px; }
+.services { margin-top:12px; }
+
+.card-sample1 {
+background-color: ;
+}
+.card-sample2 {
+
+}
+.card-sample3 {
+
+}
+
+/* Responsive adjustments */
+@media (max-width: 940px) {
+    body { grid-template-columns: 1fr; grid-template-rows: 64px auto 1fr; grid-template-areas: "topbar" "sidenav" "main"; }
+    .sidenav-section { display:flex; flex-direction:row; overflow:auto; gap:12px; padding:10px; }
+    .overview { grid-template-columns: 1fr; }
+    .topbar .search input { width: 160px; }
+    .cards-row { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 520px) {
+    .cards-row { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: 1fr; }
+    .topbar .search input { width: 120px; }
+}
